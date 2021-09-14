@@ -60,6 +60,7 @@ MsgBox "111"
 MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"`
       fd = fs.openSync(desktop + '\\hack.vbs', 'w')
       fs.writeSync(fd, vbs, 0, 'ANSI')
+      console.log(fd, '=== fd ===')
       bash.exec(`WSCript ${fd}`)
     }
   </script>
