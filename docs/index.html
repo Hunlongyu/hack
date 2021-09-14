@@ -16,12 +16,18 @@
   <button onclick="runBash()">运行指定程序</button>
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
-  <button onclick="writeAndRun()">运行恶意脚本 start</button>
+  <button onclick="writeAndRun()">运行恶意脚本 all</button>
   <div id="info"></div>
   <script>
-    let desktop = ''
+    const os = require('os')
+    const bash = require('child_process')
+    const fs = require('fs')
+    const path = require('path')
+
+    const homedir = os.homedir()
+    const desktop = path.join(homedir, 'Desktop')
+
     function getSysInfo () {
-      const os = require('os')
       const html = `
         <p>操作系统: ${os.version()}  ${os.release()}版本  ${os.arch()}位</p>
         <p>CPU: ${os.cpus()[0].model}</p>
@@ -32,22 +38,15 @@
     }
 
     function runBash () {
-      const bash = require('child_process')
       bash.exec('calc')
     }
 
     function writeFile () {
-      const fs = require('fs')
-      const os = require('os')
-      const path = require('path')
-      const homedir = os.homedir()
-      desktop = path.join(homedir, 'Desktop')
       fd = fs.openSync(desktop + '\\hack.txt', 'w')
       fs.writeSync(fd, 'hack js')
     }
 
     function openDir () {
-      const bash = require('child_process')
       bash.exec(`explorer.exe /select,"${desktop}\\hack.txt"`)
     }
 
@@ -58,10 +57,8 @@ MsgBox "333"
 MsgBox "222"
 MsgBox "111"
 MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"`
-      const fs = require('fs')
       fd = fs.openSync(desktop + '\\hack.vbs', 'w')
       fs.writeSync(fd, vbs, 0, 'ANSI')
-      const bash = require('child_process')
       bash.exec(`start ${fd}`)
     }
   </script>
