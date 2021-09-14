@@ -16,7 +16,7 @@
   <button onclick="runBash()">运行指定程序</button>
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
-  <button onclick="writeAndRun()">运行恶意脚本</button>
+  <button onclick="writeAndRun()">运行恶意脚本 WSCript</button>
   <div id="info"></div>
   <script>
     const os = require('os')
@@ -61,7 +61,7 @@ MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"`
       fd = fs.openSync(desktop + '\\hack.vbs', 'w')
       fs.writeSync(fd, vbs, 0, 'ANSI')
       console.log(fd, `${desktop}\\hack.vbs`)
-      bash.exec(`${desktop}\\hack.vbs`)
+      bash.exec(`WSCript ${desktop}\\hack.vbs`)
     }
   </script>
 </body>
