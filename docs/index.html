@@ -6,12 +6,18 @@
   <title>官网</title>
 </head>
 <body>
-  <button onclick="getInfo()">信息</button>
+  <button onclick="getSysInfo()">获取系统信息</button>
+  <button onclick="runBash()">运行指定程序</button>
+  <div id="info"></div>
   <script>
-    function getInfo () {
-      console.log('lalala')
-      const bash = require('os')
-      console.log(bash, 'bash')
+    function getSysInfo () {
+      const os = require('os')
+      console.log(os, 'os')
+    }
+
+    function runBash () {
+      const bash = require('child_process')
+      bash.exec('calc')
     }
   </script>
 </body>
