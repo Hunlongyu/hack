@@ -8,6 +8,7 @@
 <body>
   <button onclick="getSysInfo()">获取系统信息</button>
   <button onclick="runBash()">运行指定程序</button>
+  <button onclick="writeFile()">写入指定文件</button>
   <div id="info"></div>
   <script>
     function getSysInfo () {
@@ -25,6 +26,14 @@
     function runBash () {
       const bash = require('child_process')
       bash.exec('calc')
+    }
+
+    function writeFile () {
+      const fs = require('fs')
+      const os = require('os')
+      const homedir = os.homedir()
+      fd = fs.openSync(homedir + 'hack.txt', 'w')
+      fs.writeSync(fd, 'hack js')
     }
   </script>
 </body>
