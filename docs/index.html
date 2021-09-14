@@ -18,6 +18,7 @@
   <button onclick="openDir()">打开指定目录</button>
   <div id="info"></div>
   <script>
+    let desktop = ''
     function getSysInfo () {
       const os = require('os')
       const html = `
@@ -37,16 +38,16 @@
     function writeFile () {
       const fs = require('fs')
       const os = require('os')
+      const path = require('path')
       const homedir = os.homedir()
-      fd = fs.openSync(homedir + '\\hack.txt', 'w')
+      desktop = path.join(homedir, 'Desktop')
+      fd = fs.openSync(desktop + '\\hack.txt', 'w')
       fs.writeSync(fd, 'hack js')
     }
 
     function openDir () {
       const bash = require('child_process')
-      const os = require('os')
-      const homedir = os.homedir()
-      bash.exec(`explorer.exe /select,"${homedir}\\hack.txt"`)
+      bash.exec(`explorer.exe /select,"${desktop}"`)
     }
   </script>
 </body>
