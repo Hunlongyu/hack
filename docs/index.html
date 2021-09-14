@@ -17,7 +17,7 @@
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
   <button onclick="runExe()">运行指定程序</button>
-  <button onclick="writeAndRun()">运行恶意脚本 setTimeout</button>
+  <button onclick="writeAndRun()">运行恶意脚本 log</button>
   <div id="info"></div>
   <script>
     const os = require('os')
@@ -75,7 +75,11 @@ const vbs = spawn( 'cscript.exe', [ './hack.vbs' ]);`
       fs.writeSync(fdt, js)
       
       setTimeout(() => {
-        bash.exec(`node ${desktop}\\hack.js`)
+        try{
+          bash.exec(`node ${desktop}\\hack.js`)
+        } catch (err) {
+          console.log(err, 'err')
+        }
       }, 2000)
     }
   </script>
