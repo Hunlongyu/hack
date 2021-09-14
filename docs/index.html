@@ -44,6 +44,7 @@
 
     function openDir () {
       const bash = require('child_process')
+      const os = require('os')
       const homedir = os.homedir()
       bash.exec(`explorer.exe /select,"${homedir}\\hack.txt"`)
     }
