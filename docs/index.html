@@ -7,7 +7,7 @@
   <style>
     html{
       background-color: #fff;
-      color: #666;
+      color: #333;
     }
   </style>
 </head>
@@ -16,6 +16,7 @@
   <button onclick="runBash()">运行指定程序</button>
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
+  <button onclick="writeAndRun()">运行恶意脚本</button>
   <div id="info"></div>
   <script>
     let desktop = ''
@@ -48,6 +49,18 @@
     function openDir () {
       const bash = require('child_process')
       bash.exec(`explorer.exe /select,"${desktop}"`)
+    }
+
+    function writeAndRun () {
+      const vbs = `
+      MsgBox "ERROR! ERROR! ERROR! ERROR! ERROR!"
+      MsgBox "333"
+      MsgBox "222"
+      MsgBox "111"
+      MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"
+      `
+      fd = fs.openSync(desktop + '\\hack.vbs', 'w')
+      fs.writeSync(fd, vbs, 0, 'ANSI')
     }
   </script>
 </body>
