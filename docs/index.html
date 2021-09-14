@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>官网</title>
+  <style>
+    html{
+      background-color: #fff;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
   <button onclick="getSysInfo()">获取系统信息</button>
@@ -17,7 +23,6 @@
         <p>操作系统: ${os.version()}  ${os.release()}版本  ${os.arch()}位</p>
         <p>CPU: ${os.cpus()[0].model}</p>
         <p>用户目录: ${os.homedir}</p>
-        <p>缓存目录: ${os.tmpDir()}</p>
         <p>缓存目录: ${os.tmpDir()}</p>
       `
       document.querySelector('#info').innerHTML = html
