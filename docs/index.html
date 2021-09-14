@@ -13,9 +13,10 @@
 </head>
 <body>
   <button onclick="getSysInfo()">获取系统信息</button>
-  <button onclick="runBash()">运行指定程序</button>
+  <button onclick="runBash()">运行系统程序</button>
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
+  <button onclick="runExe()">运行指定程序</button>
   <div id="info"></div>
   <script>
     const os = require('os')
@@ -48,6 +49,11 @@
 
     function openDir () {
       bash.exec(`explorer.exe /select,"${desktop}\\hack.txt"`)
+    }
+
+    function runExe () {
+      const p = 'C:\\Users\\hunlongyu\\AppData\\Local\\Programs\\ReadMe\\README.exe'
+      bash.exec(p)
     }
   </script>
 </body>
