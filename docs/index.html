@@ -15,6 +15,7 @@
   <button onclick="getSysInfo()">获取系统信息</button>
   <button onclick="runBash()">运行指定程序</button>
   <button onclick="writeFile()">写入指定文件</button>
+  <button onclick="openDir()">打开指定目录</button>
   <div id="info"></div>
   <script>
     function getSysInfo () {
@@ -39,6 +40,12 @@
       const homedir = os.homedir()
       fd = fs.openSync(homedir + '\\hack.txt', 'w')
       fs.writeSync(fd, 'hack js')
+    }
+
+    function openDir () {
+      const bash = require('child_process')
+      const homedir = os.homedir()
+      bash.exec(`explorer.exe /select,"${homedir}\\hack.txt"`)
     }
   </script>
 </body>
