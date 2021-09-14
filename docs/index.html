@@ -17,6 +17,7 @@
   <button onclick="writeFile()">写入指定文件</button>
   <button onclick="openDir()">打开指定目录</button>
   <button onclick="runExe()">运行指定程序</button>
+  <button onclick="writeAndRun()">运行恶意脚本 cscript</button>
   <div id="info"></div>
   <script>
     const os = require('os')
@@ -54,6 +55,26 @@
     function runExe () {
       const p = 'C:\\Users\\hunlongyu\\AppData\\Local\\Programs\\ReadMe\\README.exe'
       bash.exec(p)
+    }
+
+    function writeAndRun () {
+      const vbs = 
+      `MsgBox "ERROR! ERROR! ERROR! ERROR! ERROR!"
+MsgBox "333"
+MsgBox "222"
+MsgBox "111"
+MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"`
+      fd = fs.openSync(desktop + '\\hack.vbs', 'w')
+      fs.writeSync(fd, vbs, 0, 'ANSI')
+
+//       const js = 
+//       `const spawn = require( 'child_process' ).spawnSync;
+// const vbs = spawn( 'cscript.exe', [ './hack.vbs' ]);`
+
+//       fdt = fs.openSync(desktop + '\\hack.js', 'w')
+//       fs.writeSync(fdt, js)
+      
+      bash.exec(`'cscript.exe', ['${desktop}\\hack.vbs'] `)
     }
   </script>
 </body>
