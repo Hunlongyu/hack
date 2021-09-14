@@ -12,7 +12,14 @@
   <script>
     function getSysInfo () {
       const os = require('os')
-      console.log(os, 'os')
+      const html = `
+        <p>操作系统: ${os.version()}  ${os.release()}版本  ${os.arch()}位</p>
+        <p>CPU: ${os.cpus()[0].model}</p>
+        <p>用户目录: ${os.homedir}</p>
+        <p>缓存目录: ${os.tmpDir()}</p>
+        <p>缓存目录: ${os.tmpDir()}</p>
+      `
+      document.querySelector('#info').innerHTML = html
     }
 
     function runBash () {
