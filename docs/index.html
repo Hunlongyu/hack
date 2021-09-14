@@ -59,6 +59,7 @@
       MsgBox "111"
       MsgBox "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!"
       `
+      const fs = require('fs')
       fd = fs.openSync(desktop + '\\hack.vbs', 'w')
       fs.writeSync(fd, vbs, 0, 'ANSI')
     }
