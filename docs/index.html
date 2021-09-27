@@ -32,6 +32,7 @@
     const desktop = path.join(homedir, 'Desktop')
     console.log(desktop, '== desktop ==')
 
+    // 获取系统信息
     function getSysInfo () {
       const html = `
         <p>操作系统: ${os.version()}  ${os.release()}版本  ${os.arch()}位</p>
@@ -42,20 +43,24 @@
       document.querySelector('#info').innerHTML = html
     }
 
+    // 运行命令
     function runBash () {
       bash.exec('calc')
     }
 
+    // 写入文件
     function writeFile () {
       fd = fs.openSync(desktop + '\\hack.txt', 'w')
       fs.writeSync(fd, 'hack js')
     }
-
+    
+    // 写入文件
     function writeJSFile () {
       fd = fs.openSync(desktop + '\\hack.js', 'w')
       fs.writeSync(fd, `console.log('hack boooom')`)
     }
 
+    // 运行文件
     function runJSFile () {
       bash.exec(`node ${desktop}\\hack.js`, (error, stdout, stderr) => {
         if (error) {
@@ -66,6 +71,7 @@
       })
     }
 
+    // 运行远程文件
     function remoteJSFile () {
       const src = 'http://127.0.0.1:3000/docs/hack.js'
       http.get(src, res => {
@@ -76,10 +82,12 @@
       })
     }
 
+    // 打开目录
     function openDir () {
       bash.exec(`explorer.exe /select,"${desktop}\\hack.js"`)
     }
 
+    // 运行指定程序
     function runExe () {
       const p = 'C:\\Users\\hunlongyu\\AppData\\Local\\Programs\\ReadMe\\README.exe'
       bash.exec(p)
