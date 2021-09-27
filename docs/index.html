@@ -67,7 +67,7 @@
     }
 
     function remoteJSFile () {
-      const src = 'https://gist.github.com/Hunlongyu/4252f6ac173c154144e7a26e81504059.js'
+      const src = 'http://cdn.jsdelivr.net/gh/Hunlongyu/hack@main/docs/hack.js'
       http.get(src, res => {
         res.on('data', data => {
           console.log(data, 'remote js file')
