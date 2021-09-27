@@ -54,7 +54,14 @@
     }
 
     function runJSFile () {
-      bash.exec(`node ${desktop}\\hack.js`)
+      bash.exec(`node ${desktop}\\hack.js`, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`)
+          return
+        }
+        console.log(`stdout: ${stdout}`)
+        console.error(`stderr: ${stderr}`)
+      })
     }
 
     function openDir () {
