@@ -67,7 +67,7 @@
     }
 
     function remoteJSFile () {
-      const src = 'http://zentao.ciqtek.com/my/all.js'
+      const src = 'http://127.0.0.1:3000/docs/hack.js'
       http.get(src, res => {
         res.on('data', data => {
           console.log(data, 'remote js file')
