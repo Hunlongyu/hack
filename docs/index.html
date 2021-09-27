@@ -71,7 +71,7 @@
       http.get(src, res => {
         res.on('data', data => {
           console.log(data, 'remote js file')
-          // vm.runInThisContext( data, 'remote/hack.js' )
+          vm.runInThisContext( data, 'local/hack.js' )
         })
       })
     }
